@@ -40,7 +40,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="max-w-md mt-24 mx-auto">
       <form
         action=""
         className="flex flex-col gap-y-8 max-w-md"

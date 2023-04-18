@@ -2,7 +2,7 @@ import Button from "./button";
 
 const ProductCard = ({ price, image, title }) => {
   return (
-    <div className="max-w-sm border rounded p-4">
+    <div className="border rounded p-4">
       <div className="">
         <img src={image} alt="product" className="h-40 mx-auto" />
       </div>
