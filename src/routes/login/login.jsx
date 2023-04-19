@@ -48,14 +48,14 @@ const Login = () => {
       >
         <input
           type="text"
-          className="border border-gray-400 h-10 rounded w-80 px-4 w-full"
+          className="border border-gray-400 h-10 rounded px-4 w-full"
           placeholder="username"
           name="username"
           onChange={handleChange}
         />
         <input
           type="password"
-          className="border border-gray-400 h-10 rounded w-80 px-4 w-full"
+          className="border border-gray-400 h-10 rounded px-4 w-full"
           placeholder="password"
           name="password"
           onChange={handleChange}

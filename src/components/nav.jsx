@@ -33,8 +33,8 @@ const AppNav = () => {
       <nav className="w-5/6 mx-auto flex justify-between py-4">
         <div className="logo">logo</div>
         <div className="menu flex gap-8">
-          {routes.map((route, id) => (
-            <Link key={id} to={route.url} className="hover:text-orange-400">
+          {routes.map((route, idx) => (
+            <Link key={idx} to={route.url} className="hover:text-orange-400">
               {route.name}
             </Link>
           ))}
