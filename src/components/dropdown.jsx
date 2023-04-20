@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { GlobalContext } from "../context/global-context";
 import Button from "./button";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../context/cart-context";
 
 const items = [
   { id: 1, name: "item 1" },
@@ -14,16 +16,29 @@ const items = [
 
 const Dropdown = () => {
   const { dropdown, toggleDropdown } = useContext(GlobalContext);
+  const { cartItems, removeProductFromCart } = useContext(CartContext);
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    toggleDropdown();
+    navigate("/checkout");
+  };
   return (
-    <div className="absolute w-40 right-8">
-      <div className=" bg-blue-200 ">
+    <div className="absolute right-8">
+      <div className=" bg-blue-200 w-48 p-2">
         {dropdown &&
-          items.map((item) => (
-            <p className="p-4" key={item.id}>
-              {item.name}
-            </p>
+          cartItems.map((item) => (
+            <div className="flex items-center">
+              <img src={item.image} alt="" className="h-8" />
+              <p className="p-4 text-xs font-medium" key={item.id}>
+                {item.title}
+              </p>
+              <span className="text-red-600 font-bold cursor-pointer" onClick={() => removeProductFromCart(item)}>x</span>
+            </div>
           ))}
-        {dropdown && <Button children="checkout" onClick={toggleDropdown} />}
+        <div className="flex items-center py-4 justify-center">
+          {dropdown && <Button children="checkout" onClick={handleCheckout} />}
+        </div>
       </div>
     </div>
   );

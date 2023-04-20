@@ -1,6 +1,6 @@
 import Button from "./button";
 
-const ProductCard = ({ price, image, title }) => {
+const ProductCard = ({ price, image, title, addToCart }) => {
   return (
     <div className="border-2 border-teal-400 bg-teal-100 shadow-xl rounded-xl p-4">
       <div className="">
@@ -11,7 +11,7 @@ const ProductCard = ({ price, image, title }) => {
         <p className="font-bold text-center text-green-900 mt-2 text-md">$ {price}</p>
       </div>
       <div className="mt-4 p-4 flex justify-center">
-        <Button children="add to cart" />
+        <Button children="add to cart" onClick={addToCart} />
       </div>
     </div>
   );

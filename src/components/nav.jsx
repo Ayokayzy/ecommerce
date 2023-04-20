@@ -4,6 +4,8 @@ import { GlobalContext } from "../context/global-context";
 import Button from "./button";
 import Dropdown from "./dropdown";
 import { Link } from "react-router-dom";
+import Cart from "./cart";
+import { CartContext } from "../context/cart-context";
 
 const routes = [
   { name: "Home", url: "/" },
@@ -13,7 +15,8 @@ const routes = [
 
 const AppNav = () => {
   const navigate = useNavigate();
-  const { toggleDropdown, auth, logout } = useContext(GlobalContext);
+  const { toggleDropdown, auth, logout, dropdown } = useContext(GlobalContext);
+  const { noOfCartItems } = useContext(CartContext);
 
   const goToLogin = () => {
     navigate("/login");
@@ -41,11 +44,12 @@ const AppNav = () => {
         </div>
         <div className="buttons flex items-center gap-x-8">
           <Button children={auth ? "logout" : "login"} onClick={handleLogin} />
-          <div>
-            <Button children="cart" onClick={toggleDropdown} />
+          <div className="flex gap-4 items-center">
             <div>
-              <Dropdown />
+              <Cart />
+              {dropdown && <Dropdown />}
             </div>
+            <Button children={noOfCartItems} onClick={toggleDropdown} />
           </div>
         </div>
       </nav>
